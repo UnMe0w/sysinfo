@@ -1062,7 +1062,7 @@ namespace Sysinfo {
 		//launch nvidia-settings button
 		public void on_nvidia_button_clicked (object o, EventArgs e) {
 			
-			System.Diagnostics.Process proc1 = new System.Diagnostics.Process();
+			Process proc1 = new Process();
 			proc1.StartInfo.FileName = "nvidia-settings";
 			//proc1.StartInfo.Arguments = "&";
 			//proc1.StartInfo.UseShellExecute = false;

@@ -30,8 +30,6 @@ namespace Sysinfo {
 		
 		//read release info
 		public void Release() {
-
-		    String temp;
 			
 			try {
 				
@@ -127,31 +125,6 @@ namespace Sysinfo {
 					}
 				}
 				
-				if (File.Exists("/etc/lsb-release")) {
-					using (TextReader textread = File.OpenText("/etc/lsb-release")) {
-
-					    while ( (temp = textread.ReadLine()) != null ) {
-
-					    	// get distro
-					    	if ( temp.StartsWith("DISTRIB_ID=") ) {
-					    		distro = temp.Substring(11);
-					    	}
-
-					    	// get release
-					    	if ( temp.StartsWith("DISTRIB_RELEASE=") ) {
-					    		system_release = temp.Substring(16);
-					    	}
-
-					    	// get codename
- 					    	if ( temp.StartsWith("DISTRIB_CODENAME=") ) {
-					    		system_release = String.Concat(system_release, " (", temp.Substring(17), ")");
-					    	}
-
-                        }
-                        system_release = String.Concat(distro, " ", system_release);
-					}
-				}
-
 			} catch (FileNotFoundException ex) {  Console.WriteLine( ex );  }
 		}
 		
@@ -162,7 +135,7 @@ namespace Sysinfo {
 			Boolean gnomeB = false;
 			
 			//Fedora,RedHat,Debian,Ubuntu,...
-			String gnome_about = "/usr/share/gnome/gnome-version.xml";
+			String gnome_about = "/usr/share/gnome-about/gnome-version.xml";
 			//SuSE
 			if (File.Exists("/opt/gnome/share/gnome-about/gnome-version.xml"))
 				gnome_about = "/opt/gnome/share/gnome-about/gnome-version.xml";
@@ -178,21 +151,21 @@ namespace Sysinfo {
 						//get version from xml
 						if ( temp.EndsWith("platform>")) {
 
-							temp = temp.Remove(0, 11);
+							temp = temp.Remove(0, 12);
 							temp = temp.Remove(temp.IndexOf("</platform>"), 11);
 							system_gnomev = temp;
 						}
 						
 						if ( temp.EndsWith("minor>")) {
 
-							temp = temp.Remove(0, 8);
+							temp = temp.Remove(0, 9);
 							temp = temp.Remove(temp.IndexOf("</minor>"), 8);
 							system_gnomev = system_gnomev + "." + temp;
 						}
 						
 						if ( temp.EndsWith("micro>")) {
 
-							temp = temp.Remove(0, 8);
+							temp = temp.Remove(0, 9);
 							temp = temp.Remove(temp.IndexOf("</micro>"), 8);
 							system_gnomev = system_gnomev + "." + temp;
 						}
@@ -200,7 +173,7 @@ namespace Sysinfo {
 						//get distributor
 						if ( temp.EndsWith("distributor>")) {
 
-							temp = temp.Remove(0, 14);
+							temp = temp.Remove(0, 15);
 							temp = temp.Remove(temp.IndexOf("</distributor>"), 14);
 							system_gnomeo = temp;
 						}
@@ -208,7 +181,7 @@ namespace Sysinfo {
 						//get build date
 						if ( temp.EndsWith("date>")) {
 
-							temp = temp.Remove(0, 7);
+							temp = temp.Remove(0, 8);
 							temp = temp.Remove(temp.IndexOf("</date>"), 7);
 							system_gnomeo = system_gnomeo + " " + temp;
 							
@@ -318,7 +291,7 @@ namespace Sysinfo {
 				proc2.WaitForExit();
 				
 				system_gcc = system_gcc + " (" + proc2.StandardOutput.ReadToEnd();
-				system_gcc = system_gcc.Remove(system_gcc.Length - 1, 1) + ")";
+				system_gcc = system_gcc.Remove(system_gcc.Length - 1, 1) + + ")";
 				proc2.Close();
 				
 			}

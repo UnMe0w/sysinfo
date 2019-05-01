@@ -4,15 +4,14 @@
 using System;
 using System.IO;
 using System.Diagnostics;
-using System.Collections;
 
 namespace Sysinfo {
 	
 	public class HardwareInfo {
 		
 		public String [] host_bridge = {null, null};
-		public ArrayList pci_bridge = new ArrayList();
-		public ArrayList usb_controller = new ArrayList();
+		public String [] pci_bridge = {null, null, null, null, null};
+		public String [] usb_controller = {null, null, null, null, null};
 		public String [] isa_bridge = {null, null};
 		public String [] ide_interface = {null, null};
 		
@@ -86,16 +85,16 @@ namespace Sysinfo {
 					}
 					
 					//pci bridge
-					if (temp.Remove(0, temp.IndexOf(" ")  + 1).StartsWith("PCI bridge")) {
+					if ( temp.Remove(0, temp.IndexOf(" ")  + 1).StartsWith("PCI bridge") ) {
 						
-						pci_bridge.Add(temp.Remove(0, temp.IndexOf(" ")  + 13));
+						pci_bridge [pci_bridgeI] = temp.Remove(0, temp.IndexOf(" ")  + 13);
 						pci_bridgeI++;
 					}
 					
 					//usb controller
-					if (temp.Remove(0, temp.IndexOf(" ")  + 1).StartsWith("USB Controller")) {
+					if ( temp.Remove(0, temp.IndexOf(" ")  + 1).StartsWith("USB Controller") ) {
 						
-						usb_controller.Add(temp.Remove(0, temp.IndexOf(" ")  + 17));
+						usb_controller [usb_controllerI] = temp.Remove(0, temp.IndexOf(" ")  + 17);
 						usb_controllerI++;
 					}
 					

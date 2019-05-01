@@ -34,7 +34,7 @@ namespace Sysinfo {
 			
 			try {
 					
-				using (TextReader textread = File.OpenText("/proc/driver/nvidia/gpus/0000:01:00.0/information")) {
+				using (TextReader textread = File.OpenText("/proc/driver/nvidia/cards/0")) {
 						
 					while ( textread.Peek() != (-1)  ) {
 							
@@ -94,7 +94,8 @@ namespace Sysinfo {
 			
 			try {
 				
-				//run command and read output: nvidia-settings --query VideoRam
+				//run command and read output: nvidia-settings --query
+				//video ram
 				Process proc1 = new Process();
 				proc1.StartInfo.FileName = "nvidia-settings";
 				proc1.StartInfo.Arguments = "-q VideoRam";

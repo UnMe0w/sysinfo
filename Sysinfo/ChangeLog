@@ -1,7 +1,4 @@
-2019-05-01 Mathias Roux <poussinberlin@gmail.com> 
 
-    * NvidiaInfo.cs: Fixed "unknown" model with newer versions of nvidia-driver
-    * Main.cs: Fixed CS0104 at line 1065
 2006-06-23  Nil Gradisnik <ghaefb@gmail.com> 
 
 	* SystemInfo.cs: Fixed the Slackware release checking from /etc/slackware-release to /etc/slackware-version (Michal Kwidzinski)
