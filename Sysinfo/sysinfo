@@ -1,0 +1,9 @@
+#!/bin/sh
+
+prefix="/usr/local"
+exec_prefix="${prefix}"
+libdir="${exec_prefix}/lib/sysinfo"
+
+cd ${libdir}
+
+exec mono  "Sysinfo.exe" "$@"

@@ -1,0 +1,33 @@
+2019-05-01 Mathias Roux <poussinberlin@gmail.com> 
+
+    * NvidiaInfo.cs: Fixed "unknown" model with newer versions of nvidia-driver
+    * Main.cs: Fixed CS0104 at line 1065
+2006-06-23  Nil Gradisnik <ghaefb@gmail.com> 
+
+	* SystemInfo.cs: Fixed the Slackware release checking from /etc/slackware-release to /etc/slackware-version (Michal Kwidzinski)
+	* NvidiaInfo.cs: Temporary fix in NVIDIA additional info, causing Sysinfo crashing with Eexception thrown. (Michal Kwidzinski)
+
+2006-06-25  Nil Gradisnik <ghaefb@gmail.com> 
+
+	* MemoryInfo.cs: Changed  the format of used/free memory information, to more sane, user friendly format. I'm including cached
+	and buffered memory with total free memory. Also replaced MB with MiB and using 1024 division istead of 1000 now.
+	* gui.glade, Main.cs: Created a checkbutton for refreshing memory information.
+	
+2006-06-26  Nil Gradisnik <ghaefb@gmail.com> 
+
+	* Main.cs: Implemented refresh memory information every 3 seconds.
+	* gui.glade: Minor widget adjustments in Memory section.
+	
+2006-08-30  Nil Gradisnik <ghaefb@gmail.com> 
+
+	* Main.cs: Fixed Notebook switch page fromEventArgs to SwitchPageArgs (mono 1.1.7)
+	
+2006-09-16  Nil Gradisnik <ghaefb@gmail.com> 
+
+	* ChangeLog: Fixed many warnings(exceptions, cairo stuff) - changed mono 1.1.7 API.
+
+2006-11-04  Nil Gradisnik <ghaefb@gmail.com> 
+
+	* Main.cs: Fixed TreeView CursorChanged signal, so it works with the latest GTK+/GTK#.
+	* HardwareInfo.cs: Added Audio device detection from lspci
+	

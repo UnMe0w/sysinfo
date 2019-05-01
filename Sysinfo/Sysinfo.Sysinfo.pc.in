@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+pkglibdir=@libdir@/@PACKAGE@
+Libraries=  ${pkglibdir}/@SYSINFO_DEBUG_LIB@@SYSINFO_RELEASE_LIB@
+
+Name: Sysinfo.Sysinfo
+Description: 
+Version: @VERSION@
+
+Requires:  gtk-sharp-2.0 mono-cairo gconf-sharp-2.0 glade-sharp-2.0 glib-sharp-2.0
+Libs:  -r:${pkglibdir}/@SYSINFO_DEBUG_LIB@@SYSINFO_RELEASE_LIB@
